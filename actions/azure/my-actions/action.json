@@ -1,0 +1,26 @@
+{
+  "actions": [
+    {
+      "description": "Default Welcome Intent",
+      "name": "MAIN",
+      "fulfillment": {
+        "conversationName": "convWelcome"
+      },
+      "intent": {
+        "name": "actions.intent.MAIN",
+        "trigger": {
+					"queryPatterns": [
+						"talk to my test app"
+					]
+				}
+      }
+    }
+  ],
+  "conversations": {
+    "convWelcome": {
+      "name": "convWelcome",
+      "url": "https://devbox-funcapp.azurewebsites.net/api/webhook?code=Ig3ZKnm5RREb6XJtlTDXA9XLBmN8WwAbYNEnam7uTcVHLZVP8nRoow=="
+    }
+  },
+  "locale": "en"
+}
