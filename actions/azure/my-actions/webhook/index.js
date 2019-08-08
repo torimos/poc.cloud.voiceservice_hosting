@@ -7,7 +7,10 @@ app.intent('actions.intent.MAIN', (conv) => {
     conv.ask(`Howdy!`);
 });
 app.intent('actions.intent.TEXT', (conv,input) => {
-    conv.ask(`>>> ${input}`);
+    if (input == "test")
+        conv.ask(`Uups. I didn't prepared`);
+    else
+        conv.ask(`I don't understant: ${input}`);
 });
 
 const expressApp = express();
