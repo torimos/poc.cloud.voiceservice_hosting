@@ -1,0 +1,20 @@
+{
+  "name": "my-actions",
+  "version": "",
+  "description": "",
+  "scripts": {
+    "start": "func host start --build",
+    "debug": "node --inspect-brk=9229 auth/index.js",
+    "deploy": "func azure functionapp publish sbox-app"
+  },
+  "author": "",
+  "dependencies": {
+    "actions-on-google": "^2.11.0",
+    "azure-function-express": "^2.0.0",
+    "express": "^4.17.1",
+    "https": "^1.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1"
+  }
+}
