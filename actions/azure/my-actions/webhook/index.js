@@ -11,6 +11,7 @@ app.intent('actions.intent.MAIN', (conv) => {
     conv.ask(new SignIn('To get your account details'));
 });
 app.intent('actions.intent.TEXT', (conv,input) => {
+    conv.ask(`Your data: ${JSON.stringify(conv.user)}.`);
     if (input == "test")
         conv.ask(`Uups. I didn't prepared`);
     else
