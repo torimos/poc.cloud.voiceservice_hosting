@@ -1,12 +1,21 @@
 const gulp = require('gulp');
 var clean = require('gulp-clean');
 const zip = require('gulp-zip');
+var gnf = require('gulp-npm-files');
 var exec = require('child_process').exec;
 
 function buildTask(cb) {
-    gulp.src('./index.js')
+    gulp.src(['./index.js','./package.json'])
+        .pipe(gulp.dest('./temp'));
+    gulp.src(gnf(), {base:'./'})
+        .pipe(gulp.dest('./temp'));
+
+    // gulp.src(['node_modules/*', 'node_modules/**/*'])
+    //     .pipe(gulp.dest('./temp/node_modules'));
+    
+    gulp.src(['temp/*', 'temp/**/*'])
         .pipe(zip('function.zip'))
-        .pipe(gulp.dest('public'));
+        .pipe(gulp.dest('./public'));
     cb();
 }
 
@@ -27,9 +36,12 @@ function deployActionsTask(cb) {
 }
 
 function cleanUpTask(cb) {
-    gulp.src('public/', {read: false})
+    gulp.src('temp/', {read: false})
         .pipe(clean());
     cb();
 }
 
-exports.default = gulp.series(buildTask, deployFuncTask, deployActionsTask, cleanUpTask);
+exports.deployActions = deployActionsTask;
+exports.deploy = deployFuncTask;
+exports.build = buildTask;
+exports.default = gulp.series(buildTask, deployFuncTask, cleanUpTask);
