@@ -1,0 +1,36 @@
+{
+  "actions": [
+    {
+      "description": "Default Welcome Intent",
+      "name": "MAIN",
+      "fulfillment": {
+        "conversationName": "convWelcome"
+      },
+      "intent": {
+        "name": "actions.intent.MAIN",
+        "trigger": {
+					"queryPatterns": [
+						"talk to my test app"
+					]
+				}
+      }
+    },
+    {
+      "description": "Any text",
+      "name": "TEXT",
+      "fulfillment": {
+        "conversationName": "convWelcome"
+      },
+      "intent": {
+        "name": "actions.intent.TEXT"
+      }
+    }
+  ],
+  "conversations": {
+    "convWelcome": {
+      "name": "convWelcome",
+      "url": "https://j6zy3gs851.execute-api.us-west-2.amazonaws.com/default/devbox-funcapp"
+    }
+  },
+  "locale": "en"
+}
